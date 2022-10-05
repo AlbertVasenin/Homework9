@@ -1,4 +1,6 @@
 package sky.pro.java;
+import java.awt.*;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -7,6 +9,11 @@ public class Main {
         generateRandomArray1(); //найти минимальную и максимальную трату за день
         generateRandomArray2(); //найти среднюю сумму в течение 30 дней
         task4(); //Ф.И.О. сотрудников начали отображаться в обратную сторону, сделать реверс
+        task5(); //усложненные задачи
+        task6(); //усложненные задачи
+        task7(); //усложненные задачи
+        task8();
+        task9();
     }
 
     int[] arr = generateRandomArray();
@@ -70,7 +77,9 @@ public class Main {
             average += arr[i]/ arr.length;
         }
         System.out.println("Средняя сумма трат за месяц составила " + average + " рублей");
+        System.out.println();
         return arr;
+
     }
 
     public static void task4() {
@@ -88,6 +97,98 @@ public class Main {
             revers = (revers + reverseFullName[i]);
         }
         System.out.println(revers);
+        System.out.println();
+    }
+
+    /* Усложненные задачи */
+
+
+    /* Создайте матрицу 3х3 (двумерный массив типа int). Заполните единицами обе диагонали матрицы и напечатайте
+    ее в консоль. Постарайтесь заполнить обе диагонали в одном цикле. Для печати следует использовать следующий код:
+    for (int[] row : matrix) {
+        for (int column : row) {
+            System.out.print(column + " ");
+        }
+        System.out.println(); */
+    public static void task5() {
+        int[][] array = new int[3][3];
+        for (int i = 0; i < array.length; i++) { //внешний цикл идет по строкам
+            for (int j = 0; j < array[i].length; j++) { //внутренний цикл идет по столбцам
+                array[0][0] = array[0][2] = array[1][1] = array[2][0] = array[2][2] = 1;
+                // присваивание значения 1 ячейкам по диагонали в матрице (3 на 3)
+            }
+        }
+        for (int[] row : array) {
+            for (int column: row) {
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    /* У нас есть массив, в котором содержатся целочисленные значения от 1 до 5.
+        Наш коллега что-то напутал, в итоге массив читается не с начала, а с конца.
+        Нам нужно исправить ошибку и переработать код так, чтобы массив читался в правильном порядке.
+        Нам дан массив чисел: {5, 4, 3, 2, 1}
+        Необходимо привести его к виду: {1, 2, 3, 4, 5}
+        Решите задачу с использованием дополнительного массива.
+        Напечатайте массив до преобразования и после с помощью
+        System.out.println(Arrays.toString(arr)); */
+    public static void task6() {
+        int [] number = {5,4,3,2,1};
+        System.out.println(Arrays.toString(number)); // до преобразования
+        /* С помощью другого массива */
+        int[] number1 = number; //создали другой массив, равный number
+        number1[0]=1; // присваиваем нужные значения индексам массива
+        number1[1]=2;
+        number1[2]=3;
+        number1[3]=4;
+        number1[4]=5;
+        System.out.println(Arrays.toString(number)); // после преобразования
+        System.out.println();
+    }
+
+    public static void task7() {
+        int [] number = {5,4,3,2,1};
+        Arrays.sort(number); // метод, сортирующий элементы массива по возрастанию
+        System.out.println(Arrays.toString(number));
+        System.out.println();
+    }
+
+    public static void task8() {
+        /* Это задание не на сортировку.
+         Не использовать Arrays.sort() и другие способы сортировок.
+         Числа в порядке убывания даны исключительно для указания направления чтения.
+         Массив может быть 5 8 2 3 9, нужно из него сделать 9 3 2 8 5. */
+        int[] num = {5, 8, 2, 3, 9};
+        for (int row:num) {
+            System.out.print(row + " ");
+        }
+        System.out.println();
+        for (int i = num.length-1; i >=0 ; i--) {
+            System.out.print(num[i]+ " ");
+        }
+        System.out.println();
+    }
+
+    public static void task9() {
+        /* Задача, которая используется/бывает/встречается на собеседованиях.
+        Дан массив чисел {−6, 2, 5, −8, 8, 10, 4, −7, 12, 1}
+        Необходимо найти два числа, сумма которых равна −2.
+        Напечатать эти числа в консоль.
+        Подсказка
+        Может потребоваться отсортировать массив с помощью Arrays.sort(arr). */
+        System.out.println();
+        int [] array = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int result = -2;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length ; j++) {
+                if(array[i] + array[j] == result){
+                    System.out.println(array[i] + "+" + array[j] + "=" + result);
+                }
+            }
+        }
     }
 }
 
