@@ -14,9 +14,11 @@ public class Main {
         task7(); //усложненные задачи
         task8();
         task9();
+        task10();
     }
 
     int[] arr = generateRandomArray();
+
     /* Первым делом бухгалтеры попросили посчитать сумму всех выплат за месяц.
     Нужно написать программу, которая решит эту задачу, и вывести в консоль результат
     в формате: «Сумма трат за месяц составила … рублей». */
@@ -38,6 +40,7 @@ public class Main {
     в формате: «Минимальная сумма трат за день составила … рублей.
     Максимальная сумма трат за день составила … рублей».*/
     int[] arr1 = generateRandomArray1();
+
     public static int[] generateRandomArray1() {
         Random random1 = new Random();
         int[] arr = new int[30];
@@ -46,12 +49,12 @@ public class Main {
         }
         int min = arr[0];
         int max = arr[0];
-        for(int i = 0; i< arr.length; i++){
-            if(min>arr[i]){
-                min=arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            if (min > arr[i]) {
+                min = arr[i];
             }
-            if(max<arr[i]){
-                max=arr[i];
+            if (max < arr[i]) {
+                max = arr[i];
             }
         }
         System.out.println("Минимальная сумма трат за день составила " + min + " рублей");
@@ -66,6 +69,7 @@ public class Main {
     «Средняя сумма трат за месяц составила … рублей».
     **Важно помнить:** подсчет среднего значения может иметь остаток (то есть быть не целым, а дробным числом).*/
     int[] arr2 = generateRandomArray2();
+
     public static int[] generateRandomArray2() {
         Random random2 = new Random();
         int[] arr = new int[30];
@@ -73,8 +77,8 @@ public class Main {
             arr[i] = random2.nextInt(100_000) + 100_000;
         }
         double average = 0;
-        for (int i = 0; i< arr.length; i++){
-            average += arr[i]/ arr.length;
+        for (int i = 0; i < arr.length; i++) {
+            average += arr[i] / arr.length;
         }
         System.out.println("Средняя сумма трат за месяц составила " + average + " рублей");
         System.out.println();
@@ -91,9 +95,9 @@ public class Main {
         В результате в консоль должно быть выведено "Ivanov Ivan".
         **Важно**: не используйте дополнительные массивы для решения этой задачи.
         Необходимо корректно пройти по массиву циклом и распечатать его элементы в правильном порядке.*/
-        char[] reverseFullName = { 'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
-        String revers =  " ";
-        for (int i = reverseFullName.length-1; i >= 0 ; i--) {
+        char[] reverseFullName = {'n', 'a', 'v', 'I', ' ', 'v', 'o', 'n', 'a', 'v', 'I'};
+        String revers = " ";
+        for (int i = reverseFullName.length - 1; i >= 0; i--) {
             revers = (revers + reverseFullName[i]);
         }
         System.out.println(revers);
@@ -119,7 +123,7 @@ public class Main {
             }
         }
         for (int[] row : array) {
-            for (int column: row) {
+            for (int column : row) {
                 System.out.print(column + " ");
             }
             System.out.println();
@@ -136,21 +140,21 @@ public class Main {
         Напечатайте массив до преобразования и после с помощью
         System.out.println(Arrays.toString(arr)); */
     public static void task6() {
-        int [] number = {5,4,3,2,1};
+        int[] number = {5, 4, 3, 2, 1};
         System.out.println(Arrays.toString(number)); // до преобразования
         /* С помощью другого массива */
         int[] number1 = number; //создали другой массив, равный number
-        number1[0]=1; // присваиваем нужные значения индексам массива
-        number1[1]=2;
-        number1[2]=3;
-        number1[3]=4;
-        number1[4]=5;
+        number1[0] = 1; // присваиваем нужные значения индексам массива
+        number1[1] = 2;
+        number1[2] = 3;
+        number1[3] = 4;
+        number1[4] = 5;
         System.out.println(Arrays.toString(number)); // после преобразования
         System.out.println();
     }
 
     public static void task7() {
-        int [] number = {5,4,3,2,1};
+        int[] number = {5, 4, 3, 2, 1};
         Arrays.sort(number); // метод, сортирующий элементы массива по возрастанию
         System.out.println(Arrays.toString(number));
         System.out.println();
@@ -162,12 +166,12 @@ public class Main {
          Числа в порядке убывания даны исключительно для указания направления чтения.
          Массив может быть 5 8 2 3 9, нужно из него сделать 9 3 2 8 5. */
         int[] num = {5, 8, 2, 3, 9};
-        for (int row:num) {
+        for (int row : num) {
             System.out.print(row + " ");
         }
         System.out.println();
-        for (int i = num.length-1; i >=0 ; i--) {
-            System.out.print(num[i]+ " ");
+        for (int i = num.length - 1; i >= 0; i--) {
+            System.out.print(num[i] + " ");
         }
         System.out.println();
     }
@@ -180,18 +184,33 @@ public class Main {
         Подсказка
         Может потребоваться отсортировать массив с помощью Arrays.sort(arr). */
         System.out.println();
-        int [] array = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int[] array = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
         int result = -2;
         for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length ; j++) {
-                if(array[i] + array[j] == result){
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] + array[j] == result) {
                     System.out.println(array[i] + "+" + array[j] + "=" + result);
+                    return;
+                }
+            }
+        }
+    }
+
+    public static void task10() {
+        /*Усложняем предыдущую задачу. Найдите все пары чисел, сумма которых равна −2. Напечатайте их в консоль.*/
+        System.out.println();
+        int[] array = {-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int result = -2;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] + array[j] == result) {
+                    System.out.println(array[i] + "+" + array[j] + "=" + result);
+
                 }
             }
         }
     }
 }
-
 
 
 
